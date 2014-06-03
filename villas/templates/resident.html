@@ -1,0 +1,6 @@
+{%extends 'base.html'%}
+{%block title%} {{request.user.first_name|add:" "|add:request.user.last_name}}{%endblock%}
+{%block innerTitle%} <p>Hello <b>{{request.user.username}} </b> </p> {%endblock%}
+
+{%block content%}
+first : look at your full name written as page title  :) <br> second : your villa is <b>{{resident.villa}} </b> and its area is <b> {{resident.villa.feet}}</b> feet{%endblock%}

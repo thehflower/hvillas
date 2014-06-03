@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block title%} List of Villas{%endblock%}
+{%block innerTitle%} Check available Villas{%endblock%}
+
+{% load render_table from django_tables2 %}
+{%block content%}
+
+ <table >
+<tr><th>Villa name</th><th>Feet</th>
+{% for v in available %}
+    
+        <tr><td>{{ v.name }}</td><td>{{ v.feet }}</td></tr>
+   
+{% endfor %}
+</table>
+<b>  not available Villas (if needed)</b>
+ <table >
+<tr><th>Villa name</th><th>Feet</th>
+{% for v1 in notavailble %}
+    
+        <tr><td>{{ v1.name }}</td><td>{{ v1.feet }}</td></tr>
+   
+{% endfor %}
+</table>
+
+{%endblock%}
