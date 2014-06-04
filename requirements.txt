@@ -10,5 +10,3 @@ psycopg2==2.5.3
 six==1.6.1
 sqlparse==0.1.11
 virtualenv==1.11.6
-
-

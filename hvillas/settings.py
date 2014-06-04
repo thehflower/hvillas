@@ -36,9 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_tables2',
-    'south',
-    'villas',
+    'south',       # for database migration
+    'villas',      # app name
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +54,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ('django.core.context_processors.request' ,
                                'django.contrib.auth.context_processors.auth')
 ROOT_URLCONF = 'hvillas.urls'
 
-WSGI_APPLICATION = 'hvillas.wsgi.application'
+WSGI_APPLICATION = 'hvillas.wsgi.application'   # for deployment
 
 
 # Database
@@ -63,11 +62,10 @@ WSGI_APPLICATION = 'hvillas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'villasdb',                      # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'postgres',
-            'PASSWORD': '123456',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # i used postgresql
+            'NAME': 'villasdb',                      # database name.
+            'USER': 'postgres',                      #postgresql default username                                   
+            'PASSWORD': '123456',                       #postgresql password
             'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
             'PORT': '',                      # Set to empty string for default.
     }
@@ -95,28 +93,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # if login is successful go to resident page
-LOGIN_REDIRECT_URL ='resident'
+LOGIN_REDIRECT_URL ='resident'      # if login is successful go to /resident
 
-LOGIN_URL ='login'
-LOGOUT_URL = '/'
+LOGIN_URL ='login'    # overriding the default 'profiles/login'
+LOGOUT_URL = '/'    # overriding default 'profiles/logout'
 
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
